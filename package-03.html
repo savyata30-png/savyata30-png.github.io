@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mergers & Acquisitions — Savyata Mishra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F7F3ED', 'cream-light': '#FDFAF6',
+            terracotta: '#C4714A', charcoal: '#2C2625', 'warm-gray': '#9C8B82',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #F7F3ED; color: #2C2625; font-family: 'Inter', sans-serif; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #9C8B82; text-decoration: none;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .back-link:hover { color: #C4714A; gap: 10px; }
+
+    .story-card {
+      background: #FDFAF6;
+      border: 1px solid rgba(196,113,74,0.1);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+      box-shadow: 0 2px 12px rgba(44,38,37,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .story-card.in-view { opacity: 1; transform: translateY(0); }
+    .story-card:hover {
+      border-color: rgba(196,113,74,0.35);
+      box-shadow: 0 12px 40px rgba(44,38,37,0.1);
+      transform: translateY(-3px);
+    }
+    .story-card:hover .story-arrow { background: #C4714A; color: #FDFAF6; transform: translateX(3px); }
+    .story-card:hover .story-number { color: #C4714A; }
+    .story-card:hover .story-headline { color: #C4714A; }
+
+    .story-number {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+      color: rgba(196,113,74,0.2); line-height: 1; flex-shrink: 0; width: 36px;
+      transition: color 0.3s;
+    }
+    .story-headline {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600;
+      color: #2C2625; line-height: 1.4; transition: color 0.3s;
+    }
+    .story-meta { font-size: 0.72rem; color: #9C8B82; margin-top: 6px; letter-spacing: 0.04em; }
+    .story-arrow {
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(196,113,74,0.3); display: flex; align-items: center;
+      justify-content: center; color: #C4714A; margin-left: auto;
+      transition: all 0.3s; align-self: center;
+    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .decorative-line { width: 50px; height: 3px; background: linear-gradient(90deg,#C4714A,#8B4A2F); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav style="backdrop-filter:blur(12px);background:rgba(247,243,237,0.9);border-bottom:1px solid rgba(196,113,74,0.08);position:sticky;top:0;z-index:50;padding:18px 48px;">
+    <div style="max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:600;font-size:1.1rem;color:#2C2625;text-decoration:none;">SM</a>
+      <a href="index.html#portfolio" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero band -->
+  <div style="background:linear-gradient(135deg,#3D2B1F 0%,#6B3A28 40%,#C4714A 100%);padding:64px 48px 56px;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p style="font-size:0.7rem;color:rgba(247,243,237,0.5);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Package 03 · Mergers &amp; Acquisitions</p>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#F7F3ED;line-height:1.15;margin-bottom:16px;">Corporate Strategy<br/>&amp; Deal-Making</h1>
+      <p style="color:rgba(247,243,237,0.65);font-size:0.95rem;line-height:1.7;max-width:520px;margin-bottom:24px;">Inside the boardroom on high-stakes acquisitions, hostile takeovers, and the corporate maneuvering that reshapes entire industries.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="background:rgba(247,243,237,0.12);border:1px solid rgba(247,243,237,0.18);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">M&amp;A</span>
+        <span style="background:rgba(247,243,237,0.12);border:1px solid rgba(247,243,237,0.18);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Corporate Finance</span>
+        <span style="background:rgba(247,243,237,0.12);border:1px solid rgba(247,243,237,0.18);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Deal Flow</span>
+        <span style="background:rgba(247,243,237,0.12);border:1px solid rgba(247,243,237,0.18);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Private Equity</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stories -->
+  <main style="max-width:800px;margin:0 auto;padding:56px 48px 80px;">
+
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px;" class="reveal">
+      <div class="decorative-line"></div>
+      <p style="font-size:0.75rem;color:#9C8B82;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">7 Stories · Published on Reuters</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+
+      <a href="https://www.reuters.com/business/retail-consumer/snickers-maker-mars-pay-8350-per-share-kellanova-wsj-reports-2024-08-14/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="0">
+        <span class="story-number">01</span>
+        <div style="flex:1;">
+          <p class="story-headline">Snickers maker Mars to pay $83.50 per share for Kellanova</p>
+          <p class="story-meta">Reuters · August 14, 2024 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/markets/deals/coach-parent-tapestry-terminates-85-billion-deal-capri-2024-11-14/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="80">
+        <span class="story-number">02</span>
+        <div style="flex:1;">
+          <p class="story-headline">Coach parent Tapestry terminates $8.5 billion deal for Capri</p>
+          <p class="story-meta">Reuters · November 14, 2024 · Markets / Deals</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/markets/deals/nordstrom-agrees-625-bln-buyout-deal-founding-family-2024-12-23/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="160">
+        <span class="story-number">03</span>
+        <div style="flex:1;">
+          <p class="story-headline">Nordstrom agrees $6.25 billion buyout deal with founding family</p>
+          <p class="story-meta">Reuters · December 23, 2024 · Markets / Deals</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/markets/deals/footwear-brand-skechers-be-taken-private-9-billion-deal-2025-05-05/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="240">
+        <span class="story-number">04</span>
+        <div style="flex:1;">
+          <p class="story-headline">Footwear brand Skechers to be taken private in $9 billion deal</p>
+          <p class="story-meta">Reuters · May 5, 2025 · Markets / Deals</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/markets/deals/dicks-sporting-goods-acquire-foot-locker-24-billion-2025-05-15/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="320">
+        <span class="story-number">05</span>
+        <div style="flex:1;">
+          <p class="story-headline">Dick's Sporting Goods to acquire Foot Locker for $2.4 billion</p>
+          <p class="story-meta">Reuters · May 15, 2025 · Markets / Deals</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/ferrero-poised-revive-wk-kellogg-sales-health-conscious-americans-2025-07-15/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="400">
+        <span class="story-number">06</span>
+        <div style="flex:1;">
+          <p class="story-headline">Ferrero poised to revive WK Kellogg sales to health-conscious Americans</p>
+          <p class="story-meta">Reuters · July 15, 2025 · Business</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/sustainability/sustainable-finance-reporting/kraft-heinz-splits-unwinding-disappointing-merger-2025-09-02/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="480">
+        <span class="story-number">07</span>
+        <div style="flex:1;">
+          <p class="story-headline">Kraft Heinz splits, unwinding disappointing merger</p>
+          <p class="story-meta">Reuters · September 2, 2025 · Sustainability</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Footer nav -->
+    <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(196,113,74,0.12);display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html#portfolio" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to Portfolio
+      </a>
+      <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#9C8B82;font-style:italic;">Savyata Mishra · Reuters</p>
+    </div>
+  </main>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    const cardObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting)
+          setTimeout(() => e.target.classList.add('in-view'), parseInt(e.target.dataset.delay || '0'));
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.story-card').forEach(el => cardObs.observe(el));
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 150);
+    });
+  </script>
+</body>
+</html>

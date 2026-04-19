@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big-Box Retailers — Savyata Mishra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F7F3ED', 'cream-light': '#FDFAF6', 'cream-dark': '#EDE6D8',
+            terracotta: '#C4714A', 'terracotta-dark': '#A85A35',
+            charcoal: '#2C2625', 'charcoal-light': '#4A4240', 'warm-gray': '#9C8B82',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #F7F3ED; color: #2C2625; font-family: 'Inter', sans-serif; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #9C8B82; text-decoration: none;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .back-link:hover { color: #C4714A; gap: 10px; }
+
+    .story-card {
+      background: #FDFAF6;
+      border: 1px solid rgba(196,113,74,0.1);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+      box-shadow: 0 2px 12px rgba(44,38,37,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .story-card.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .story-card:hover {
+      border-color: rgba(196,113,74,0.35);
+      box-shadow: 0 12px 40px rgba(44,38,37,0.1);
+      transform: translateY(-3px);
+    }
+    .story-card:hover .story-arrow {
+      background: #C4714A;
+      color: #FDFAF6;
+      transform: translateX(3px);
+    }
+    .story-card:hover .story-number { color: #C4714A; }
+    .story-card:hover .story-headline { color: #C4714A; }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgba(196,113,74,0.2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+      transition: color 0.3s;
+    }
+    .story-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2C2625;
+      line-height: 1.4;
+      transition: color 0.3s;
+    }
+    .story-meta {
+      font-size: 0.72rem;
+      color: #9C8B82;
+      margin-top: 6px;
+      letter-spacing: 0.04em;
+    }
+    .story-arrow {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(196,113,74,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #C4714A;
+      margin-left: auto;
+      transition: all 0.3s;
+      align-self: center;
+    }
+
+    .tag-pill {
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(196,113,74,0.1); color: #C4714A;
+    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .decorative-line { width: 50px; height: 3px; background: linear-gradient(90deg,#C4714A,#8B4A2F); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav style="backdrop-filter:blur(12px);background:rgba(247,243,237,0.9);border-bottom:1px solid rgba(196,113,74,0.08);position:sticky;top:0;z-index:50;padding:18px 48px;">
+    <div style="max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:600;font-size:1.1rem;color:#2C2625;text-decoration:none;">SM</a>
+      <a href="index.html#portfolio" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero band -->
+  <div style="background:linear-gradient(135deg,#D4A574 0%,#8B6347 50%,#5C3D2E 100%);padding:64px 48px 56px;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p style="font-size:0.7rem;color:rgba(247,243,237,0.6);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Package 01 · Big-Box Retailers</p>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#F7F3ED;line-height:1.15;margin-bottom:16px;">Retail Strategy &amp;<br/>Consumer Trends</h1>
+      <p style="color:rgba(247,243,237,0.7);font-size:0.95rem;line-height:1.7;max-width:520px;margin-bottom:24px;">CEO strategy, pricing battles, and market milestones — from Walmart's $1 trillion moment to turnaround stories at Nike and Lululemon.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="background:rgba(247,243,237,0.15);border:1px solid rgba(247,243,237,0.2);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Walmart</span>
+        <span style="background:rgba(247,243,237,0.15);border:1px solid rgba(247,243,237,0.2);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Target</span>
+        <span style="background:rgba(247,243,237,0.15);border:1px solid rgba(247,243,237,0.2);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Kroger</span>
+        <span style="background:rgba(247,243,237,0.15);border:1px solid rgba(247,243,237,0.2);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Nike</span>
+        <span style="background:rgba(247,243,237,0.15);border:1px solid rgba(247,243,237,0.2);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Coca-Cola</span>
+        <span style="background:rgba(247,243,237,0.15);border:1px solid rgba(247,243,237,0.2);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#F7F3ED;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Lululemon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stories -->
+  <main style="max-width:800px;margin:0 auto;padding:56px 48px 80px;">
+
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px;" class="reveal">
+      <div class="decorative-line"></div>
+      <p style="font-size:0.75rem;color:#9C8B82;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">6 Stories · Published on Reuters</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+
+      <a href="https://www.reuters.com/business/retail-consumer/walmart-hits-1-trillion-market-value-first-time-2026-02-03/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="0">
+        <span class="story-number">01</span>
+        <div style="flex:1;">
+          <p class="story-headline">Walmart hits $1 trillion market value, joins club dominated by Big Tech giants</p>
+          <p class="story-meta">Reuters · February 3, 2026 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/retail-consumer/kroger-forecasts-annual-sales-largely-below-estimates-2026-03-05/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="80">
+        <span class="story-number">02</span>
+        <div style="flex:1;">
+          <p class="story-headline">Kroger keeps forecasts soft as new CEO bets on growth by keeping prices down</p>
+          <p class="story-meta">Reuters · March 5, 2026 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/retail-consumer/new-target-ceo-slashes-prices-previous-cuts-offered-short-lived-sales-boost-2026-03-13/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="160">
+        <span class="story-number">03</span>
+        <div style="flex:1;">
+          <p class="story-headline">New Target CEO slashes prices. Previous cuts offered short-lived sales boost.</p>
+          <p class="story-meta">Reuters · March 13, 2026 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/nikes-turnaround-put-test-middle-east-conflict-poses-new-risks-2026-04-01/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="240">
+        <span class="story-number">04</span>
+        <div style="flex:1;">
+          <p class="story-headline">Nike's turnaround put to test as Middle East conflict poses new risks</p>
+          <p class="story-meta">Reuters · April 1, 2026 · Business</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/sustainability/boards-policy-regulation/coca-cola-bets-incoming-chief-brauns-global-experience-amid-shift-low-sugar-2025-12-11/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="320">
+        <span class="story-number">05</span>
+        <div style="flex:1;">
+          <p class="story-headline">Coca-Cola bets on incoming chief Braun's global experience amid shift to low-sugar drinks</p>
+          <p class="story-meta">Reuters · December 11, 2025 · Sustainability</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/sustainability/sustainable-finance-reporting/lululemon-sparks-hopes-reset-with-ceo-exit-back-to-basics-focus-2025-12-12/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="400">
+        <span class="story-number">06</span>
+        <div style="flex:1;">
+          <p class="story-headline">Lululemon CEO exit sparks hopes of reset at athleisure pioneer</p>
+          <p class="story-meta">Reuters · December 12, 2025 · Sustainability</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Footer nav -->
+    <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(196,113,74,0.12);display:flex;align-items:center;justify-content:space-between;flex-wrap:gap;">
+      <a href="index.html#portfolio" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to Portfolio
+      </a>
+      <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#9C8B82;font-style:italic;">Savyata Mishra · Reuters</p>
+    </div>
+  </main>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    const cardObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in-view'), parseInt(e.target.dataset.delay || '0'));
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.story-card').forEach(el => cardObs.observe(el));
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 150);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Social Pulse — Savyata Mishra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F7F3ED', 'cream-light': '#FDFAF6',
+            terracotta: '#C4714A', charcoal: '#2C2625', 'warm-gray': '#9C8B82',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #F7F3ED; color: #2C2625; font-family: 'Inter', sans-serif; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #9C8B82; text-decoration: none;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .back-link:hover { color: #C4714A; gap: 10px; }
+
+    .story-card {
+      background: #FDFAF6;
+      border: 1px solid rgba(196,113,74,0.1);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+      box-shadow: 0 2px 12px rgba(44,38,37,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .story-card.in-view { opacity: 1; transform: translateY(0); }
+    .story-card:hover {
+      border-color: rgba(196,113,74,0.35);
+      box-shadow: 0 12px 40px rgba(44,38,37,0.1);
+      transform: translateY(-3px);
+    }
+    .story-card:hover .story-arrow { background: #C4714A; color: #FDFAF6; transform: translateX(3px); }
+    .story-card:hover .story-number { color: #C4714A; }
+    .story-card:hover .story-headline { color: #C4714A; }
+
+    .story-number {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+      color: rgba(196,113,74,0.2); line-height: 1; flex-shrink: 0; width: 36px;
+      transition: color 0.3s;
+    }
+    .story-headline {
+      font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600;
+      color: #2C2625; line-height: 1.4; transition: color 0.3s;
+    }
+    .story-meta { font-size: 0.72rem; color: #9C8B82; margin-top: 6px; letter-spacing: 0.04em; }
+    .story-arrow {
+      flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(196,113,74,0.3); display: flex; align-items: center;
+      justify-content: center; color: #C4714A; margin-left: auto;
+      transition: all 0.3s; align-self: center;
+    }
+    .metric-pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(196,113,74,0.08); border: 1px solid rgba(196,113,74,0.2);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 0.78rem; font-weight: 600; color: #C4714A;
+    }
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .decorative-line { width: 50px; height: 3px; background: linear-gradient(90deg,#C4714A,#8B4A2F); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav style="backdrop-filter:blur(12px);background:rgba(247,243,237,0.9);border-bottom:1px solid rgba(196,113,74,0.08);position:sticky;top:0;z-index:50;padding:18px 48px;">
+    <div style="max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html" style="font-family:'Playfair Display',serif;font-weight:600;font-size:1.1rem;color:#2C2625;text-decoration:none;">SM</a>
+      <a href="index.html#portfolio" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero band -->
+  <div style="background:linear-gradient(135deg,#E8DCC8 0%,#D4C4A8 50%,#C4A882 100%);padding:64px 48px 56px;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p style="font-size:0.7rem;color:rgba(44,38,37,0.45);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Package 04 · The Social Pulse</p>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:#2C2625;line-height:1.15;margin-bottom:16px;">Consumer Trends<br/>&amp; Cultural Shifts</h1>
+      <p style="color:rgba(44,38,37,0.6);font-size:0.95rem;line-height:1.7;max-width:520px;margin-bottom:24px;">From the Wegovy craze to value wars — tracking the cultural and economic forces reshaping what Americans eat, drink, and spend.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+        <span style="background:rgba(44,38,37,0.08);border:1px solid rgba(44,38,37,0.12);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#2C2625;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Consumer Trends</span>
+        <span style="background:rgba(44,38,37,0.08);border:1px solid rgba(44,38,37,0.12);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#2C2625;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Food &amp; Beverage</span>
+        <span style="background:rgba(44,38,37,0.08);border:1px solid rgba(44,38,37,0.12);border-radius:20px;padding:4px 12px;font-size:0.7rem;color:#2C2625;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;">Cultural Shifts</span>
+      </div>
+      <!-- LinkedIn metrics -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <span class="metric-pill">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          50K+ Impressions
+        </span>
+        <span class="metric-pill">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          2K+ Likes
+        </span>
+        <span class="metric-pill">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          300+ Comments
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stories -->
+  <main style="max-width:800px;margin:0 auto;padding:56px 48px 80px;">
+
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px;" class="reveal">
+      <div class="decorative-line"></div>
+      <p style="font-size:0.75rem;color:#9C8B82;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">6 Stories · Published on Reuters</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+
+      <a href="https://www.reuters.com/business/healthcare-pharmaceuticals/wegovy-craze-was-all-rage-q3-earnings-calls-2023-11-20/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="0">
+        <span class="story-number">01</span>
+        <div style="flex:1;">
+          <p class="story-headline">Wegovy craze was all the rage on Q3 earnings calls</p>
+          <p class="story-meta">Reuters · November 20, 2023 · Healthcare &amp; Pharmaceuticals</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/retail-consumer/tupperware-brands-files-chapter-11-bankruptcy-2024-09-18/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="80">
+        <span class="story-number">02</span>
+        <div style="flex:1;">
+          <p class="story-headline">Tupperware Brands files Chapter 11 bankruptcy</p>
+          <p class="story-meta">Reuters · September 18, 2024 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/mcdonalds-chilis-win-value-fast-casual-chains-lose-younger-diners-2025-11-07/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="160">
+        <span class="story-number">03</span>
+        <div style="flex:1;">
+          <p class="story-headline">McDonald's, Chili's win value battle as fast-casual chains lose younger diners</p>
+          <p class="story-meta">Reuters · November 7, 2025 · Business</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/retail-consumer/brown-forman-misses-quarterly-sales-estimates-muted-spirits-demand-2025-03-05/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="240">
+        <span class="story-number">04</span>
+        <div style="flex:1;">
+          <p class="story-headline">Brown-Forman misses quarterly sales estimates on muted spirits demand</p>
+          <p class="story-meta">Reuters · March 5, 2025 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/retail-consumer/modelo-owner-constellation-says-trump-immigration-crackdown-hitting-hispanic-2025-04-10/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="320">
+        <span class="story-number">05</span>
+        <div style="flex:1;">
+          <p class="story-headline">Modelo owner Constellation says Trump immigration crackdown hitting Hispanic consumers</p>
+          <p class="story-meta">Reuters · April 10, 2025 · Retail &amp; Consumer</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="https://www.reuters.com/business/healthcare-pharmaceuticals/many-this-years-super-bowl-features-salad-food-companies-are-racing-react-2026-02-08/"
+         target="_blank" rel="noopener noreferrer" class="story-card" data-delay="400">
+        <span class="story-number">06</span>
+        <div style="flex:1;">
+          <p class="story-headline">Many of this year's Super Bowl features salad. Food companies are racing to react.</p>
+          <p class="story-meta">Reuters · February 8, 2026 · Healthcare &amp; Pharmaceuticals</p>
+        </div>
+        <div class="story-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Footer nav -->
+    <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(196,113,74,0.12);display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html#portfolio" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to Portfolio
+      </a>
+      <p style="font-family:'Playfair Display',serif;font-size:0.9rem;color:#9C8B82;font-style:italic;">Savyata Mishra · Reuters</p>
+    </div>
+  </main>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    const cardObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting)
+          setTimeout(() => e.target.classList.add('in-view'), parseInt(e.target.dataset.delay || '0'));
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.story-card').forEach(el => cardObs.observe(el));
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 150);
+    });
+  </script>
+</body>
+</html>

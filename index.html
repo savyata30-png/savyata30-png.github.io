@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savyata Mishra | Senior Content Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F7F3ED',
+            'cream-light': '#FDFAF6',
+            'cream-dark': '#EDE6D8',
+            terracotta: '#C4714A',
+            'terracotta-dark': '#A85A35',
+            sienna: '#8B4A2F',
+            charcoal: '#2C2625',
+            'charcoal-light': '#4A4240',
+            'warm-gray': '#9C8B82',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #F7F3ED; color: #2C2625; font-family: 'Inter', sans-serif; }
+
+    .nav-link {
+      position: relative; color: #4A4240; font-size: 0.875rem;
+      font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: #C4714A; transition: width 0.3s;
+    }
+    .nav-link:hover { color: #C4714A; }
+    .nav-link:hover::after { width: 100%; }
+
+    .hero-section { position: relative; overflow: hidden; }
+    .hero-bg-shape {
+      position: absolute; top: -10%; right: -5%; width: 55%; height: 120%;
+      background: linear-gradient(135deg, #EDE6D8 0%, #E2D5C3 100%);
+      border-radius: 40% 0 0 60%; z-index: 0;
+    }
+    .hero-accent-dot { position: absolute; border-radius: 50%; background: #C4714A; opacity: 0.12; }
+
+    .headshot-container { position: relative; width: 320px; height: 390px; }
+    .headshot-frame {
+      width: 280px; height: 345px;
+      background: linear-gradient(145deg, #EDE6D8, #D4C4B0);
+      border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+      position: absolute; top: 0; left: 20px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(44,38,37,0.15);
+    }
+    .headshot-border {
+      position: absolute; width: 290px; height: 355px;
+      border: 2px solid rgba(196,113,74,0.35);
+      border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+      top: -5px; left: 15px; animation: float-border 4s ease-in-out infinite;
+    }
+    .headshot-accent {
+      position: absolute; bottom: -10px; right: 0;
+      width: 80px; height: 80px; background: #C4714A; border-radius: 50%; opacity: 0.18;
+    }
+    @keyframes float-border {
+      0%, 100% { transform: translate(0,0); }
+      50% { transform: translate(-3px,-5px); }
+    }
+
+    .portfolio-card {
+      background: #FDFAF6; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(44,38,37,0.06);
+      transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      opacity: 0; transform: translateY(30px);
+    }
+    .portfolio-card.in-view { opacity: 1; transform: translateY(0); }
+    .portfolio-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(44,38,37,0.15); }
+
+    .card-thumbnail { height: 200px; position: relative; overflow: hidden; }
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(44,38,37,0.7) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .portfolio-card:hover .card-overlay { opacity: 1; }
+
+    .metric-badge {
+      background: rgba(196,113,74,0.1); border: 1px solid rgba(196,113,74,0.3);
+      border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600;
+      color: #C4714A; display: inline-flex; align-items: center; gap: 4px;
+    }
+
+    .about-section { background: #2C2625; color: #F7F3ED; }
+    .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: #C4714A; flex-shrink: 0; margin-top: 5px; }
+
+    .contact-input {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(237,230,216,0.18);
+      border-radius: 8px; padding: 12px 16px; width: 100%; color: #F7F3ED;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; transition: border-color 0.3s; outline: none;
+    }
+    .contact-input:focus { border-color: #C4714A; background: rgba(196,113,74,0.05); }
+    .contact-input::placeholder { color: rgba(247,243,237,0.35); }
+
+    .contact-btn {
+      background: #C4714A; color: #FDFAF6; border: none;
+      padding: 14px 32px; border-radius: 8px; font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: 0.9rem; letter-spacing: 0.03em;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .contact-btn:hover { background: #A85A35; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(196,113,74,0.4); }
+
+    .social-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(237,230,216,0.22);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s; color: rgba(247,243,237,0.6);
+    }
+    .social-icon:hover { border-color: #C4714A; background: rgba(196,113,74,0.12); color: #C4714A; transform: translateY(-3px); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .decorative-line { width: 60px; height: 3px; background: linear-gradient(90deg,#C4714A,#8B4A2F); border-radius: 2px; }
+    .tag-pill {
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(196,113,74,0.1); color: #C4714A;
+    }
+    .scroll-indicator { animation: scroll-bounce 2s ease-in-out infinite; }
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(8px); opacity: 0.5; }
+    }
+    .badge-float {
+      position: absolute; border-radius: 12px; padding: 10px 16px;
+      box-shadow: 0 8px 30px rgba(44,38,37,0.12);
+    }
+
+    a.portfolio-card:hover .card-arrow-overlay { opacity: 1 !important; }
+    a.portfolio-card:hover .inline-flex { background: rgba(196,113,74,0.18) !important; gap: 10px; }
+
+    @keyframes scroll-drop {
+      0% { top: -40%; opacity: 0; }
+      30% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    @keyframes scroll-fade {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    @keyframes scroll-dot {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(4px); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg-shape { display: none; }
+      .headshot-container { width: 220px; height: 268px; }
+      .headshot-frame { width: 190px; height: 234px; }
+      .headshot-border { width: 200px; height: 244px; }
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5"
+    style="backdrop-filter:blur(12px);background:rgba(247,243,237,0.88);border-bottom:1px solid rgba(196,113,74,0.08);">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#home" class="font-serif text-charcoal font-semibold text-xl tracking-wide">SM</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#about" class="nav-link">About</a>
+      </div>
+      <button class="md:hidden text-charcoal" id="mobile-menu-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="pt-4 pb-2 flex flex-col gap-4 px-2">
+        <a href="#portfolio" class="nav-link py-1">Portfolio</a>
+        <a href="#about" class="nav-link py-1">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero-section flex items-center pt-28 pb-16 md:pt-32 md:pb-20">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-accent-dot" style="width:220px;height:220px;top:8%;left:-6%;"></div>
+    <div class="hero-accent-dot" style="width:90px;height:90px;bottom:18%;left:32%;opacity:0.07;"></div>
+
+    <div class="max-w-6xl mx-auto px-6 md:px-12 w-full relative z-10">
+      <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8">
+
+        <!-- Text -->
+        <div class="flex-1 text-center md:text-left max-w-xl">
+          <div class="tag-pill mb-6 reveal">Senior Content Specialist</div>
+
+          <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal leading-tight mb-3 reveal" style="transition-delay:0.1s;">
+            Savyata<br/>
+            <span class="text-terracotta" style="font-style:italic;">Mishra</span>
+          </h1>
+
+          <p class="text-sm font-medium tracking-widest uppercase mb-8 reveal" style="color:#9C8B82;transition-delay:0.2s;">Thomson Reuters · 6+ Years</p>
+
+          <p class="text-xl md:text-2xl text-charcoal-light leading-relaxed mb-10 reveal" style="font-family:'Playfair Display',serif;font-style:italic;transition-delay:0.3s;">
+            "Hi! I craft stories on <span style="color:#C4714A;font-style:normal;font-weight:600;">real-time trends</span><br class="hidden md:block"/>
+            for the <span style="font-style:normal;font-weight:700;color:#2C2625;">2 a.m. thumb-stop.</span>"
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start reveal" style="transition-delay:0.4s;">
+            <a href="#portfolio" class="px-8 py-3.5 bg-terracotta text-cream-light font-semibold text-sm rounded-full hover:bg-terracotta-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+              View Portfolio
+            </a>
+            <a href="#contact" class="px-8 py-3.5 border border-charcoal-light text-charcoal font-semibold text-sm rounded-full hover:border-terracotta hover:text-terracotta transition-all duration-300">
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex gap-8 mt-12 justify-center md:justify-start reveal" style="transition-delay:0.5s;">
+            <div>
+              <p class="font-serif text-3xl font-bold text-terracotta">6+</p>
+              <p class="text-xs text-warm-gray uppercase tracking-wider mt-1">Years</p>
+            </div>
+            <div class="w-px bg-cream-dark"></div>
+            <div>
+              <p class="font-serif text-3xl font-bold text-terracotta">500+</p>
+              <p class="text-xs text-warm-gray uppercase tracking-wider mt-1">Stories</p>
+            </div>
+            <div class="w-px bg-cream-dark"></div>
+            <div>
+              <p class="font-serif text-3xl font-bold text-terracotta">1M+</p>
+              <p class="text-xs text-warm-gray uppercase tracking-wider mt-1">Impressions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Headshot -->
+        <div class="flex-shrink-0 flex justify-center reveal" style="transition-delay:0.25s;">
+          <div class="headshot-container">
+            <div class="headshot-border"></div>
+            <div class="headshot-frame">
+              <img src="headshot.jpg" alt="Savyata Mishra" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+            </div>
+            <div class="headshot-accent"></div>
+
+            <!-- Reuters badge -->
+            <div class="badge-float" style="top:20px;left:-100px;background:#2C2625;border:1px solid rgba(196,113,74,0.2);white-space:nowrap;">
+              <p style="font-size:0.6rem;color:#9C8B82;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">Currently at</p>
+              <p style="font-size:0.85rem;font-weight:600;color:#F7F3ED;font-family:'Inter',sans-serif;">Thomson Reuters</p>
+            </div>
+
+            <!-- Location badge -->
+            <div class="badge-float" style="bottom:10px;right:-16px;background:#FDFAF6;border:1px solid rgba(196,113,74,0.15);">
+              <p style="font-size:0.6rem;color:#9C8B82;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px;">Based in</p>
+              <p style="font-size:0.85rem;font-weight:600;color:#2C2625;font-family:'Inter',sans-serif;">Bengaluru, India</p>
+            </div>
+          </div>
+
+          <!-- Email + Social icons below photo -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:20px;">
+          <a href="mailto:savyata30@gmail.com" style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:#9C8B82;text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;"
+             onmouseover="this.style.color='#C4714A';" onmouseout="this.style.color='#9C8B82';">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            savyata30@gmail.com
+          </a>
+          <div style="display:flex;justify-content:center;gap:12px;">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/savyatamishra/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+               style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#9C8B82;transition:all 0.3s;text-decoration:none;"
+               onmouseover="this.style.borderColor='#C4714A';this.style.background='rgba(196,113,74,0.1)';this.style.color='#C4714A';"
+               onmouseout="this.style.borderColor='rgba(196,113,74,0.3)';this.style.background='transparent';this.style.color='#9C8B82';">
+              <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <!-- X / Twitter -->
+            <a href="https://x.com/savyatamishra?s=11" target="_blank" rel="noopener noreferrer" title="X"
+               style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#9C8B82;transition:all 0.3s;text-decoration:none;"
+               onmouseover="this.style.borderColor='#C4714A';this.style.background='rgba(196,113,74,0.1)';this.style.color='#C4714A';"
+               onmouseout="this.style.borderColor='rgba(196,113,74,0.3)';this.style.background='transparent';this.style.color='#9C8B82';">
+              <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <!-- Threads -->
+            <a href="https://www.threads.com/@savyata_mp3?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" title="Threads"
+               style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#9C8B82;transition:all 0.3s;text-decoration:none;"
+               onmouseover="this.style.borderColor='#C4714A';this.style.background='rgba(196,113,74,0.1)';this.style.color='#C4714A';"
+               onmouseout="this.style.borderColor='rgba(196,113,74,0.3)';this.style.background='transparent';this.style.color='#9C8B82';">
+              <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="currentColor" viewBox="0 0 192 192">
+                <path d="M141.537 88.988c-1.044-.5-2.08-.977-3.107-1.43C136.67 60.54 121.75 44.906 96.696 44.745c-.113-.001-.226-.001-.34-.001-14.72 0-26.982 6.14-34.549 17.285l13.154 9.157c5.804-8.169 14.86-10.882 22.04-10.882.088 0 .176 0 .264.001 9.46.06 16.628 3.162 21.33 9.24 3.543 4.5 5.874 10.75 6.958 18.605-8.16-1.353-16.955-1.768-26.284-1.32C76.7 88.374 62.206 101.574 63.215 121.542c.51 10.156 5.38 18.905 13.84 24.76 7.134 5.015 16.315 7.448 25.948 6.953 12.725-.652 22.809-5.77 29.921-15.108 5.352-7.831 8.698-18.03 10.023-31.07 5.802 3.303 10.057 7.731 12.276 13.358 3.826 9.703 4.076 25.941-8.274 38.058-10.733 10.516-23.567 15.074-43.649 15.223-22.323-.167-39.076-7.471-49.692-21.646C44.6 138.62 39.414 119.397 39.26 95c.154-24.397 5.34-43.62 15.395-57.071C65.273 23.754 82.025 16.45 104.349 16.283c22.507.167 39.592 7.503 50.61 21.7 5.382 6.953 9.489 15.722 11.97 25.945l15.615-4.08c-3.053-11.846-8.022-22.096-14.815-30.596C154.136 12.451 134.276 3.66 104.436 3.436l-.188-.001c-29.7.226-49.394 9.039-62.677 25.818C30.639 44.51 24.599 66.311 24.446 95c.153 28.69 6.193 50.491 18.124 65.746 13.284 16.779 32.976 25.592 62.677 25.817l.188.001c29.62-.223 49.354-8.897 63.052-22.421 15.262-15.158 14.784-35.186 9.498-47.384-4.082-9.808-11.57-17.739-21.768-22.958l-13.68-2.813ZM100.073 137.28c-9.643.442-19.676-3.754-20.156-13.43-.361-7.141 4.29-15.03 19.932-15.827 1.774-.088 3.515-.131 5.226-.131 6.456 0 12.542.643 18.137 1.894-1.952 22.765-13.32 27.058-23.14 27.494Z"/>
+              </svg>
+            </a>
+          </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hidden md:flex justify-center mt-10"
+           style="cursor:pointer;" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <span style="font-size:0.6rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#C4714A;animation:scroll-fade 2s ease-in-out infinite;">Scroll</span>
+          <div style="width:1px;height:52px;background:rgba(196,113,74,0.15);border-radius:1px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-40%;left:0;width:100%;height:40%;background:linear-gradient(to bottom,transparent,#C4714A);border-radius:1px;animation:scroll-drop 2s ease-in-out infinite;"></div>
+          </div>
+          <div style="width:5px;height:5px;border-radius:50%;background:#C4714A;animation:scroll-dot 2s ease-in-out infinite;"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="py-24 md:py-32 px-6 md:px-12" style="background:#FDFAF6;">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="mb-16 text-center">
+        <div class="tag-pill mb-4 reveal">Work</div>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-charcoal mb-5 reveal" style="transition-delay:0.1s;">Portfolio</h2>
+        <p class="text-warm-gray text-lg max-w-2xl mx-auto leading-relaxed reveal" style="transition-delay:0.2s;">
+          Documenting 6+ years of high-velocity reporting and strategic storytelling at Reuters.
+        </p>
+        <div class="decorative-line mx-auto mt-6 reveal" style="transition-delay:0.3s;"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+        <!-- Card 1: Big-Box Retailers -->
+        <a href="package-01.html" class="portfolio-card block" data-delay="0" style="cursor:pointer;text-decoration:none;">
+          <div class="card-thumbnail" style="background:linear-gradient(135deg,#D4A574 0%,#8B6347 50%,#5C3D2E 100%);">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.14;">
+              <svg viewBox="0 0 120 80" fill="white" style="width:60%;">
+                <rect x="5" y="22" width="28" height="53" rx="2"/>
+                <rect x="45" y="10" width="28" height="65" rx="2"/>
+                <rect x="85" y="32" width="28" height="43" rx="2"/>
+              </svg>
+            </div>
+            <div class="card-overlay">
+              <span style="color:#F7F3ED;font-size:0.85rem;font-weight:500;">Retail Strategy &amp; Consumer Trends</span>
+            </div>
+            <div style="position:absolute;top:16px;left:16px;background:rgba(247,243,237,0.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:4px 12px;">
+              <span style="font-size:0.65rem;color:#F7F3ED;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Package 01</span>
+            </div>
+            <!-- Hover arrow overlay -->
+            <div class="card-arrow-overlay" style="position:absolute;top:50%;right:20px;transform:translateY(-50%);opacity:0;transition:opacity 0.3s;">
+              <div style="width:40px;height:40px;border-radius:50%;background:rgba(247,243,237,0.2);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;color:#F7F3ED;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tag-pill">Walmart</span>
+              <span class="tag-pill">Target</span>
+              <span class="tag-pill">Kroger</span>
+              <span class="tag-pill">Nike</span>
+              <span class="tag-pill">Coca-Cola</span>
+              <span class="tag-pill">Lululemon</span>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-charcoal mb-2">Big-Box Retailers</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color:#9C8B82;">CEO strategy, pricing battles, and market milestones — from Walmart's $1 trillion moment to turnaround stories at Nike and Lululemon.</p>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300" style="background:rgba(196,113,74,0.1);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">
+              View 6 Stories
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: US Trade & Tariffs -->
+        <a href="package-02.html" class="portfolio-card block" data-delay="100" style="cursor:pointer;text-decoration:none;">
+          <div class="card-thumbnail" style="background:linear-gradient(135deg,#2C2625 0%,#4A2C1A 50%,#8B4A2F 100%);">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.12;">
+              <svg viewBox="0 0 120 80" fill="none" style="width:65%;">
+                <circle cx="30" cy="40" r="20" fill="white"/>
+                <circle cx="90" cy="40" r="20" fill="white"/>
+                <path d="M50 40 Q60 20 70 40" stroke="white" stroke-width="3" fill="none"/>
+                <path d="M50 40 Q60 60 70 40" stroke="white" stroke-width="3" fill="none"/>
+              </svg>
+            </div>
+            <div class="card-overlay">
+              <span style="color:#F7F3ED;font-size:0.85rem;font-weight:500;">Global Trade Impact Analysis</span>
+            </div>
+            <div style="position:absolute;top:16px;left:16px;background:rgba(247,243,237,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:4px 12px;">
+              <span style="font-size:0.65rem;color:#F7F3ED;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Package 02</span>
+            </div>
+            <div class="card-arrow-overlay" style="position:absolute;top:50%;right:20px;transform:translateY(-50%);opacity:0;transition:opacity 0.3s;">
+              <div style="width:40px;height:40px;border-radius:50%;background:rgba(247,243,237,0.2);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;color:#F7F3ED;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tag-pill">Trade Policy</span>
+              <span class="tag-pill">Tariffs</span>
+              <span class="tag-pill">Global Markets</span>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-charcoal mb-2">US Trade &amp; Tariffs</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color:#9C8B82;">Tracking the downstream impact of Trump-era tariff policies on global supply chains, manufacturing costs, and the businesses caught in the crossfire.</p>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300" style="background:rgba(196,113,74,0.1);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">
+              View 5 Stories
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3: M&A -->
+        <a href="package-03.html" class="portfolio-card block" data-delay="200" style="cursor:pointer;text-decoration:none;">
+          <div class="card-thumbnail" style="background:linear-gradient(135deg,#3D2B1F 0%,#6B3A28 40%,#C4714A 100%);">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.12;">
+              <svg viewBox="0 0 120 80" fill="white" style="width:60%;">
+                <rect x="8" y="25" width="38" height="30" rx="4"/>
+                <rect x="74" y="25" width="38" height="30" rx="4"/>
+                <path d="M46 40 L74 40" stroke="white" stroke-width="3"/>
+                <polygon points="64,34 74,40 64,46" fill="white"/>
+              </svg>
+            </div>
+            <div class="card-overlay">
+              <span style="color:#F7F3ED;font-size:0.85rem;font-weight:500;">Corporate Strategy &amp; Deal-Making</span>
+            </div>
+            <div style="position:absolute;top:16px;left:16px;background:rgba(247,243,237,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:4px 12px;">
+              <span style="font-size:0.65rem;color:#F7F3ED;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Package 03</span>
+            </div>
+            <div class="card-arrow-overlay" style="position:absolute;top:50%;right:20px;transform:translateY(-50%);opacity:0;transition:opacity 0.3s;">
+              <div style="width:40px;height:40px;border-radius:50%;background:rgba(247,243,237,0.2);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;color:#F7F3ED;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tag-pill">M&amp;A</span>
+              <span class="tag-pill">Corporate Finance</span>
+              <span class="tag-pill">Deal Flow</span>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-charcoal mb-2">Mergers &amp; Acquisitions</h3>
+            <p class="text-sm leading-relaxed mb-5" style="color:#9C8B82;">Inside the boardroom on high-stakes deals, hostile takeovers, and the corporate maneuvering that reshapes entire industries.</p>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300" style="background:rgba(196,113,74,0.1);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">
+              View 7 Stories
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4: Social Pulse -->
+        <a href="package-04.html" class="portfolio-card block" data-delay="300" style="cursor:pointer;text-decoration:none;border:1px solid rgba(196,113,74,0.18);">
+          <div class="card-thumbnail" style="background:linear-gradient(135deg,#E8DCC8 0%,#D4C4A8 50%,#C4A882 100%);">
+            <div style="position:absolute;inset:0;padding:20px;display:flex;flex-direction:column;gap:8px;justify-content:center;">
+              <div style="height:8px;background:rgba(139,74,47,0.28);border-radius:4px;width:70%;"></div>
+              <div style="height:8px;background:rgba(139,74,47,0.18);border-radius:4px;width:90%;"></div>
+              <div style="height:8px;background:rgba(139,74,47,0.12);border-radius:4px;width:55%;"></div>
+              <div style="margin-top:8px;display:flex;gap:8px;">
+                <div style="height:6px;background:rgba(196,113,74,0.5);border-radius:10px;width:50px;"></div>
+                <div style="height:6px;background:rgba(196,113,74,0.3);border-radius:10px;width:40px;"></div>
+                <div style="height:6px;background:rgba(196,113,74,0.2);border-radius:10px;width:35px;"></div>
+              </div>
+            </div>
+            <div class="card-overlay" style="background:linear-gradient(to top,rgba(44,38,37,0.55) 0%,transparent 60%);">
+              <span style="color:#F7F3ED;font-size:0.85rem;font-weight:500;">Consumer Trends &amp; Culture</span>
+            </div>
+            <div style="position:absolute;top:16px;left:16px;background:rgba(44,38,37,0.07);backdrop-filter:blur(8px);border:1px solid rgba(44,38,37,0.1);border-radius:20px;padding:4px 12px;">
+              <span style="font-size:0.65rem;color:#2C2625;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;">Package 04</span>
+            </div>
+            <div class="card-arrow-overlay" style="position:absolute;top:50%;right:20px;transform:translateY(-50%);opacity:0;transition:opacity 0.3s;">
+              <div style="width:40px;height:40px;border-radius:50%;background:rgba(44,38,37,0.2);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;color:#2C2625;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tag-pill">Consumer Trends</span>
+              <span class="tag-pill">Food &amp; Beverage</span>
+              <span class="tag-pill">Cultural Shifts</span>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-charcoal mb-2">The Social Pulse</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#9C8B82;">From the Wegovy craze to value wars — tracking the cultural and economic forces reshaping what Americans eat, drink, and spend.</p>
+
+            <!-- Metrics -->
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="metric-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+                50K+ Impressions
+              </span>
+              <span class="metric-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+                2K+ Likes
+              </span>
+              <span class="metric-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+                300+ Comments
+              </span>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300" style="background:rgba(196,113,74,0.1);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">
+              View 6 Stories
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <p class="text-sm mb-4" style="color:#9C8B82;">Want to see the full body of work?</p>
+        <a href="#contact" class="inline-flex items-center gap-2 text-terracotta font-semibold hover:gap-4 transition-all duration-300">
+          Request Full Portfolio
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section py-24 md:py-32 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <div>
+          <div class="tag-pill mb-4 reveal" style="background:rgba(196,113,74,0.15);color:#C4714A;">About</div>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 reveal" style="color:#F7F3ED;transition-delay:0.1s;">
+            The story<br/><span class="text-terracotta" style="font-style:italic;">behind the byline.</span>
+          </h2>
+          <p class="mb-5 leading-relaxed reveal" style="color:rgba(247,243,237,0.68);transition-delay:0.2s;">
+            Senior Content Specialist at Reuters with over 6 years covering high-stakes business stories — from billion-dollar M&amp;A deals to the human cost of tariff policies on Main Street America.
+          </p>
+          <p class="mb-10 leading-relaxed reveal" style="color:rgba(247,243,237,0.68);transition-delay:0.3s;">
+            My work lives at the intersection of real-time news and long-form storytelling — built for the reader who scrolls at 2 a.m. and deserves more than a headline.
+          </p>
+          <div class="flex flex-wrap gap-2 reveal" style="transition-delay:0.4s;">
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Brand Storytelling</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Digital Marketing</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">SEO</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Copywriting</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Social Media Marketing</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Data Visualisation</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Google Analytics</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Google Trends</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Meta Ads Manager</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Search Console</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">CMS</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Editing &amp; Proofreading</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Market Research</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Stakeholder Management</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Fintech &amp; Retail</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Data Analytics</span>
+            <span class="px-3 py-1 rounded-full text-xs font-medium" style="background:rgba(196,113,74,0.15);color:#C4714A;border:1px solid rgba(196,113,74,0.25);">Communication</span>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="space-y-8 reveal" style="transition-delay:0.2s;">
+          <h3 class="font-serif text-xl font-semibold mb-6" style="color:#F7F3ED;">Experience</h3>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-dot"></div>
+              <div class="w-px flex-1 mt-2" style="background:rgba(196,113,74,0.2);"></div>
+            </div>
+            <div class="pb-8">
+              <p class="font-semibold mb-1" style="color:#F7F3ED;">Senior Content Specialist, US Equity</p>
+              <p class="text-sm font-medium mb-2 text-terracotta">Thomson Reuters, Bengaluru · 2023 – Present</p>
+              <p class="text-sm leading-relaxed" style="color:rgba(247,243,237,0.55);">Authored 500+ high-quality stories on Fortune 500 growth strategies (Walmart, Target, McDonald's). Scaled news items to 100K+ views with multi-channel strategies across LinkedIn, Reddit, and Threads.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-dot" style="background:rgba(196,113,74,0.5);"></div>
+              <div class="w-px flex-1 mt-2" style="background:rgba(196,113,74,0.2);"></div>
+            </div>
+            <div class="pb-8">
+              <p class="font-semibold mb-1" style="color:#F7F3ED;">Breaking News Specialist, APAC Markets</p>
+              <p class="text-sm font-medium mb-2" style="color:rgba(196,113,74,0.7);">Thomson Reuters, Bengaluru · 2020 – 2023</p>
+              <p class="text-sm leading-relaxed" style="color:rgba(247,243,237,0.55);">Delivered &lt;140-character news alerts used by media clients across Australia, New Zealand, Hong Kong, and Southeast Asia. Mentored teammates on Reuters style, content structure, and SEO.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="timeline-dot" style="background:rgba(196,113,74,0.3);"></div>
+            </div>
+            <div>
+              <p class="font-semibold mb-1" style="color:#F7F3ED;">City Reporter Intern</p>
+              <p class="text-sm font-medium mb-2" style="color:rgba(196,113,74,0.45);">The New Indian Express, Bhubaneswar · 2019</p>
+              <p class="text-sm leading-relaxed" style="color:rgba(247,243,237,0.55);">Wrote 5 stories including front-page pieces on social issues and cultural events during a one-month internship.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#2C2625;padding:32px 48px;">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-serif text-lg font-semibold" style="color:#F7F3ED;">Savyata Mishra</p>
+      <p class="text-xs" style="color:rgba(247,243,237,0.25);">© 2025 · Senior Content Specialist</p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection observer for .reveal
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Intersection observer for portfolio cards with stagger
+    const cardObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const delay = parseInt(e.target.dataset.delay || '0');
+          setTimeout(() => e.target.classList.add('in-view'), delay);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.portfolio-card').forEach(el => cardObs.observe(el));
+
+    // Nav shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.style.boxShadow = window.scrollY > 40 ? '0 4px 30px rgba(44,38,37,0.1)' : 'none';
+    });
+
+    // Mobile menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+
+    // Hero reveal on load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.hero-section .reveal').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 120);
+        });
+      }, 150);
+    });
+
+    // Form submit
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Sent! ✓';
+      btn.style.background = '#5a8a6a';
+      setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; e.target.reset(); }, 3000);
+    }
+  </script>
+</body>
+</html>
