@@ -175,8 +175,9 @@
       /* Fix horizontal overflow on mobile */
       #social { padding-left: 20px !important; padding-right: 20px !important; }
       #social .social-grid { grid-template-columns: 1fr !important; }
-      #social .featured-card-inner { flex-wrap: wrap !important; }
+      #social .featured-card-inner { flex-direction: column !important; gap: 16px !important; }
       #social .featured-card-inner > div:first-child { min-width: 0 !important; width: 100%; }
+      #social .featured-card-stats { justify-content: flex-start !important; }
     }
   </style>
 </head>
@@ -511,7 +512,7 @@
             <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;">Kroger's new CEO bets the company on one strategy: keep prices down.</p>
             <p style="font-size:0.85rem;color:rgba(247,243,237,0.5);line-height:1.6;">A breakdown of Kroger's earnings and what the C-suite shift means for grocery competition in America.</p>
           </div>
-          <div style="display:flex;gap:32px;flex-shrink:0;align-items:center;">
+          <div class="featured-card-stats" style="display:flex;gap:32px;flex-shrink:0;align-items:center;">
             <div style="text-align:center;">
               <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#C4714A;line-height:1;">45.5K</p>
               <p style="font-size:0.65rem;color:rgba(247,243,237,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Impressions</p>
