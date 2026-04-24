@@ -32,8 +32,8 @@
     }
   </script>
   <style>
-    html { scroll-behavior: smooth; }
-    body { background-color: #F7F3ED; color: #2C2625; font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background-color: #F7F3ED; color: #2C2625; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
     .nav-link {
       position: relative; color: #4A4240; font-size: 0.875rem;
@@ -172,6 +172,11 @@
       .headshot-frame { width: 190px; height: 234px; }
       .headshot-border { width: 200px; height: 244px; }
       .reuters-badge { left: -8px !important; top: 10px !important; }
+      /* Fix horizontal overflow on mobile */
+      #social { padding-left: 20px !important; padding-right: 20px !important; }
+      #social .social-grid { grid-template-columns: 1fr !important; }
+      #social .featured-card-inner { flex-wrap: wrap !important; }
+      #social .featured-card-inner > div:first-child { min-width: 0 !important; width: 100%; }
     }
   </style>
 </head>
@@ -500,7 +505,7 @@
          style="display:block;text-decoration:none;background:rgba(255,255,255,0.05);border:1px solid rgba(196,113,74,0.2);border-radius:16px;padding:32px 36px;margin-bottom:16px;transition:all 0.3s;position:relative;overflow:hidden;"
          onmouseover="this.style.borderColor='rgba(196,113,74,0.5)';this.style.background='rgba(255,255,255,0.08)';"
          onmouseout="this.style.borderColor='rgba(196,113,74,0.2)';this.style.background='rgba(255,255,255,0.05)';">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div class="featured-card-inner" style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">
           <div style="flex:1;min-width:260px;">
             <div style="display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#C4714A;background:rgba(196,113,74,0.12);padding:3px 10px;border-radius:12px;margin-bottom:14px;">Top Post</div>
             <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;">Kroger's new CEO bets the company on one strategy: keep prices down.</p>
@@ -524,7 +529,7 @@
       </a>
 
       <!-- 2x2 grid -->
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+      <div class="social-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
 
         <!-- Canadians boycott whiskey: 28K -->
         <a href="https://www.linkedin.com/posts/savyatamishra_whiskey-bourbon-alcohol-share-7353521632184864769-1fPu"
