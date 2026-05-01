@@ -172,8 +172,20 @@
       .headshot-frame { width: 190px; height: 234px; }
       .headshot-border { width: 200px; height: 244px; }
       .reuters-badge { display: none !important; }
-      /* Fix horizontal overflow on mobile */
-      #social { padding-left: 20px !important; padding-right: 20px !important; }
+
+      /* Fix: fixed height + flex-col-reverse overflow clips headshot behind nav on mobile */
+      #home {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+        padding-top: 96px !important;
+        padding-bottom: 48px !important;
+      }
+      /* Tighter gap between headshot and text on mobile */
+      .hero-row { gap: 24px !important; }
+
+      /* Social section padding on mobile */
+      #social { padding: 56px 20px 64px !important; }
       #social .social-grid { grid-template-columns: 1fr !important; }
       #social .featured-card-inner { flex-direction: column !important; gap: 16px !important; }
       #social .featured-card-inner > div:first-child { min-width: 0 !important; width: 100%; }
@@ -181,7 +193,21 @@
       .bylines-grid-top { grid-template-columns: 1fr !important; }
       .bylines-grid-bottom { grid-template-columns: 1fr !important; }
       #bylines .bylines-inner { padding: 40px 20px 48px !important; }
+
+      /* About section */
+      #about .grid { gap: 40px !important; }
+
+      /* Footer */
+      footer { padding: 28px 20px !important; }
+
+      /* Ticker */
       .ticker-item { font-size: 0.78rem !important; }
+    }
+
+    /* Very small phones: tighten ticker label */
+    @media (max-width: 380px) {
+      #reuters-ticker > div:first-child { padding: 0 12px !important; }
+      #reuters-ticker > div:first-child span { font-size: 0.5rem !important; letter-spacing: 0.1em !important; }
     }
 
     /* ── REUTERS BYLINES ── */
@@ -268,7 +294,7 @@
     <div class="hero-accent-dot" style="width:90px;height:90px;bottom:18%;left:32%;opacity:0.07;"></div>
 
     <div class="max-w-6xl mx-auto px-6 md:px-12 w-full relative z-10">
-      <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8">
+      <div class="hero-row flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8">
 
         <!-- Text -->
         <div class="flex-1 text-center md:text-left max-w-xl">
