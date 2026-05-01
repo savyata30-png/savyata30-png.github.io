@@ -178,7 +178,60 @@
       #social .featured-card-inner { flex-direction: column !important; gap: 16px !important; }
       #social .featured-card-inner > div:first-child { min-width: 0 !important; width: 100%; }
       #social .featured-card-stats { justify-content: flex-start !important; }
+      .bylines-grid-top { grid-template-columns: 1fr !important; }
+      .bylines-grid-bottom { grid-template-columns: 1fr !important; }
+      #bylines .bylines-inner { padding: 40px 20px 48px !important; }
+      .ticker-item { font-size: 0.78rem !important; }
     }
+
+    /* ── REUTERS BYLINES ── */
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.65); }
+    }
+    .ticker-track { animation: ticker 32s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.875rem; font-weight: 600;
+      color: rgba(247,243,237,0.82);
+      padding: 0 20px 0 0; display: inline-block; white-space: nowrap;
+    }
+    .ticker-sep {
+      color: #C4714A; font-size: 1rem; font-weight: 700;
+      padding: 0 20px 0 0; display: inline-block;
+    }
+    .byline-card {
+      display: block; text-decoration: none;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(196,113,74,0.15);
+      border-radius: 12px; padding: 24px;
+      transition: all 0.3s; position: relative;
+    }
+    .byline-card:hover {
+      background: rgba(196,113,74,0.07);
+      border-color: rgba(196,113,74,0.42);
+      transform: translateY(-3px);
+    }
+    .byline-tag {
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #C4714A; margin-bottom: 12px;
+    }
+    .byline-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: #F7F3ED; line-height: 1.45; margin: 0 0 18px 0;
+    }
+    .byline-arrow {
+      font-size: 1rem; color: rgba(196,113,74,0.45);
+      display: inline-block; transition: color 0.2s, transform 0.2s;
+    }
+    .byline-card:hover .byline-arrow { color: #C4714A; transform: translateX(5px); }
   </style>
 </head>
 <body class="font-sans">
@@ -345,6 +398,97 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- REUTERS BYLINES -->
+  <section id="bylines" style="background:#1A1210;overflow:hidden;padding:0;">
+
+    <!-- Ticker strip -->
+    <div style="border-bottom:1px solid rgba(196,113,74,0.15);display:flex;align-items:stretch;height:48px;overflow:hidden;">
+      <!-- Pinned label -->
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 20px;background:#C4714A;z-index:2;">
+        <span style="font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#FDFAF6;white-space:nowrap;">Reuters Bylines</span>
+        <div style="width:5px;height:5px;border-radius:50%;background:#FDFAF6;animation:pulse-dot 1.8s ease-in-out infinite;flex-shrink:0;"></div>
+      </div>
+      <!-- Scrolling text -->
+      <div style="flex:1;overflow:hidden;display:flex;align-items:center;">
+        <div class="ticker-track" style="display:inline-flex;align-items:center;white-space:nowrap;">
+          <span class="ticker-item">Retailers pull out stops to neutralize inflation, tariff drag</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Companies tone down price-hike talk as tariff fog clears</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Kraft Heinz splits, unwinding disappointing merger</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Global consumer companies face pricing stress test from oil shock</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Frank's, Cholula: McCormick's decade of deals sets stage for bold Unilever move</span><span class="ticker-sep">·</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="ticker-item">Retailers pull out stops to neutralize inflation, tariff drag</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Companies tone down price-hike talk as tariff fog clears</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Kraft Heinz splits, unwinding disappointing merger</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Global consumer companies face pricing stress test from oil shock</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">Frank's, Cholula: McCormick's decade of deals sets stage for bold Unilever move</span><span class="ticker-sep">·</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards area -->
+    <div class="bylines-inner" style="padding:52px 48px 60px;max-width:1152px;margin:0 auto;">
+
+      <!-- Header row -->
+      <div class="reveal" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:12px;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#F7F3ED;line-height:1.15;margin:0;">
+          Selected <span style="color:#C4714A;font-style:italic;">Reuters</span> Stories
+        </h2>
+        <a href="https://www.reuters.com/authors/savyata-mishra/" target="_blank" rel="noopener noreferrer"
+           style="font-size:0.78rem;font-weight:600;color:#C4714A;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(196,113,74,0.3);padding:8px 16px;border-radius:20px;transition:all 0.2s;min-height:44px;"
+           onmouseover="this.style.background='rgba(196,113,74,0.1)';" onmouseout="this.style.background='transparent';">
+          Full author page
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
+      <!-- Row 1: 3 cards -->
+      <div class="bylines-grid-top" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+
+        <a href="https://www.reuters.com/business/retail-consumer/retailers-pull-out-stops-neutralize-inflation-tariff-drag-2025-12-03/"
+           target="_blank" rel="noopener noreferrer" class="byline-card reveal">
+          <div class="byline-tag">Retail &amp; Consumer · Dec 2025</div>
+          <p class="byline-headline">Retailers pull out stops to neutralize inflation, tariff drag</p>
+          <span class="byline-arrow">→</span>
+        </a>
+
+        <a href="https://www.reuters.com/business/companies-tone-down-price-hike-talk-tariff-fog-clears-2025-11-24/"
+           target="_blank" rel="noopener noreferrer" class="byline-card reveal" style="transition-delay:0.1s;">
+          <div class="byline-tag">Business · Nov 2025</div>
+          <p class="byline-headline">Companies tone down price-hike talk as tariff fog clears</p>
+          <span class="byline-arrow">→</span>
+        </a>
+
+        <a href="https://www.reuters.com/sustainability/sustainable-finance-reporting/kraft-heinz-splits-unwinding-disappointing-merger-2025-09-02/"
+           target="_blank" rel="noopener noreferrer" class="byline-card reveal" style="transition-delay:0.2s;">
+          <div class="byline-tag">M&amp;A · Sep 2025</div>
+          <p class="byline-headline">Kraft Heinz splits, unwinding disappointing merger</p>
+          <span class="byline-arrow">→</span>
+        </a>
+
+      </div>
+
+      <!-- Row 2: 2 cards -->
+      <div class="bylines-grid-bottom" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+
+        <a href="https://www.reuters.com/business/energy/global-consumer-companies-face-pricing-stress-test-oil-shock-2026-04-27/"
+           target="_blank" rel="noopener noreferrer" class="byline-card reveal" style="transition-delay:0.3s;">
+          <div class="byline-tag">Energy &amp; Consumer · Apr 2026</div>
+          <p class="byline-headline">Global consumer companies face pricing stress test from oil shock</p>
+          <span class="byline-arrow">→</span>
+        </a>
+
+        <a href="https://www.reuters.com/business/franks-cholula-mccormicks-decade-deals-sets-stage-bold-unilever-move-2026-03-20/"
+           target="_blank" rel="noopener noreferrer" class="byline-card reveal" style="transition-delay:0.4s;">
+          <div class="byline-tag">M&amp;A · Mar 2026</div>
+          <p class="byline-headline">Frank's, Cholula: McCormick's decade of deals sets stage for bold Unilever move</p>
+          <span class="byline-arrow">→</span>
+        </a>
+
+      </div>
     </div>
   </section>
 
