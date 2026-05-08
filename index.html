@@ -184,21 +184,25 @@
       /* Tighter gap between headshot and text on mobile */
       .hero-row { gap: 24px !important; }
 
-      /* Social section padding on mobile */
-      #social { padding: 56px 20px 64px !important; }
-      #social .social-grid { grid-template-columns: 1fr !important; }
-      #social .featured-card-inner { flex-direction: column !important; gap: 16px !important; }
-      #social .featured-card-inner > div:first-child { min-width: 0 !important; width: 100%; }
-      #social .featured-card-stats { justify-content: flex-start !important; }
-      .bylines-grid-top { grid-template-columns: 1fr !important; }
-      .bylines-grid-bottom { grid-template-columns: 1fr !important; }
-      #bylines .bylines-inner { padding: 40px 20px 48px !important; }
+      /* Social section */
+      #social { padding: 56px 0 64px !important; }
+      #social > div { padding: 0 20px !important; }
+      /* Scroll strip: card fills ~85% of screen so next card peeks */
+      .li-scroll-card { width: 82vw !important; max-width: 320px !important; }
+      #li-scroll-strip { padding: 8px 20px 20px !important; gap: 14px !important; }
+      /* Hide right fade on mobile — strip hits edge naturally */
+      #li-scroll-strip + div,
+      #social [style*="pointer-events:none"] { display: none !important; }
 
       /* About section */
       #about .grid { gap: 40px !important; }
 
-      /* Footer */
+      /* Footer: stack vertically, center everything */
       footer { padding: 28px 20px !important; }
+      footer > div { flex-direction: column !important; align-items: center !important; gap: 16px !important; text-align: center !important; }
+      footer > div > div { justify-content: center !important; flex-wrap: wrap !important; }
+      /* Hide email in footer on small screens to avoid overflow */
+      footer a[href^="mailto"] { display: none !important; }
 
       /* Ticker */
       .ticker-item { font-size: 0.78rem !important; }
@@ -367,44 +371,44 @@
 
           <!-- Social icons + Email below photo -->
           <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:20px;width:100%;">
-          <div style="display:flex;justify-content:center;gap:12px;">
+          <div style="display:flex;justify-content:center;gap:14px;">
             <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/savyatamishra/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
-               style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
-               onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='rgba(196,113,74,0.1)';this.querySelector('span').style.color='#C4714A';"
-               onmouseout="this.querySelector('span').style.borderColor='rgba(196,113,74,0.3)';this.querySelector('span').style.background='transparent';this.querySelector('span').style.color='#9C8B82';">
-              <span style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#9C8B82;transition:all 0.3s;">
-                <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;" fill="currentColor" viewBox="0 0 24 24">
+               style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
+               onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='#C4714A';this.querySelector('span').style.color='#FDFAF6';this.querySelector('span').style.transform='translateY(-3px)';"
+               onmouseout="this.querySelector('span').style.borderColor='#2C2625';this.querySelector('span').style.background='#2C2625';this.querySelector('span').style.color='#F7F3ED';this.querySelector('span').style.transform='translateY(0)';">
+              <span style="width:48px;height:48px;border-radius:50%;border:2px solid #2C2625;background:#2C2625;display:flex;align-items:center;justify-content:center;color:#F7F3ED;transition:all 0.25s;box-shadow:0 2px 12px rgba(44,38,37,0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </span>
             </a>
             <!-- X / Twitter -->
             <a href="https://x.com/savyatamishra?s=11" target="_blank" rel="noopener noreferrer" title="X"
-               style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
-               onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='rgba(196,113,74,0.1)';this.querySelector('span').style.color='#C4714A';"
-               onmouseout="this.querySelector('span').style.borderColor='rgba(196,113,74,0.3)';this.querySelector('span').style.background='transparent';this.querySelector('span').style.color='#9C8B82';">
-              <span style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#9C8B82;transition:all 0.3s;">
-                <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="currentColor" viewBox="0 0 24 24">
+               style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
+               onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='#C4714A';this.querySelector('span').style.color='#FDFAF6';this.querySelector('span').style.transform='translateY(-3px)';"
+               onmouseout="this.querySelector('span').style.borderColor='#2C2625';this.querySelector('span').style.background='#2C2625';this.querySelector('span').style.color='#F7F3ED';this.querySelector('span').style.transform='translateY(0)';">
+              <span style="width:48px;height:48px;border-radius:50%;border:2px solid #2C2625;background:#2C2625;display:flex;align-items:center;justify-content:center;color:#F7F3ED;transition:all 0.25s;box-shadow:0 2px 12px rgba(44,38,37,0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:19px;height:19px;" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </span>
             </a>
             <!-- Threads -->
             <a href="https://www.threads.com/@savyata_mp3?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" title="Threads"
-               style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
-               onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='rgba(196,113,74,0.1)';this.querySelector('span').style.color='#C4714A';"
-               onmouseout="this.querySelector('span').style.borderColor='rgba(196,113,74,0.3)';this.querySelector('span').style.background='transparent';this.querySelector('span').style.color='#9C8B82';">
-              <span style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#9C8B82;transition:all 0.3s;">
-                <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="currentColor" viewBox="0 0 192 192">
-                <path d="M141.537 88.988c-1.044-.5-2.08-.977-3.107-1.43C136.67 60.54 121.75 44.906 96.696 44.745c-.113-.001-.226-.001-.34-.001-14.72 0-26.982 6.14-34.549 17.285l13.154 9.157c5.804-8.169 14.86-10.882 22.04-10.882.088 0 .176 0 .264.001 9.46.06 16.628 3.162 21.33 9.24 3.543 4.5 5.874 10.75 6.958 18.605-8.16-1.353-16.955-1.768-26.284-1.32C76.7 88.374 62.206 101.574 63.215 121.542c.51 10.156 5.38 18.905 13.84 24.76 7.134 5.015 16.315 7.448 25.948 6.953 12.725-.652 22.809-5.77 29.921-15.108 5.352-7.831 8.698-18.03 10.023-31.07 5.802 3.303 10.057 7.731 12.276 13.358 3.826 9.703 4.076 25.941-8.274 38.058-10.733 10.516-23.567 15.074-43.649 15.223-22.323-.167-39.076-7.471-49.692-21.646C44.6 138.62 39.414 119.397 39.26 95c.154-24.397 5.34-43.62 15.395-57.071C65.273 23.754 82.025 16.45 104.349 16.283c22.507.167 39.592 7.503 50.61 21.7 5.382 6.953 9.489 15.722 11.97 25.945l15.615-4.08c-3.053-11.846-8.022-22.096-14.815-30.596C154.136 12.451 134.276 3.66 104.436 3.436l-.188-.001c-29.7.226-49.394 9.039-62.677 25.818C30.639 44.51 24.599 66.311 24.446 95c.153 28.69 6.193 50.491 18.124 65.746 13.284 16.779 32.976 25.592 62.677 25.817l.188.001c29.62-.223 49.354-8.897 63.052-22.421 15.262-15.158 14.784-35.186 9.498-47.384-4.082-9.808-11.57-17.739-21.768-22.958l-13.68-2.813ZM100.073 137.28c-9.643.442-19.676-3.754-20.156-13.43-.361-7.141 4.29-15.03 19.932-15.827 1.774-.088 3.515-.131 5.226-.131 6.456 0 12.542.643 18.137 1.894-1.952 22.765-13.32 27.058-23.14 27.494Z"/>
-              </svg>
+               style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
+               onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='#C4714A';this.querySelector('span').style.color='#FDFAF6';this.querySelector('span').style.transform='translateY(-3px)';"
+               onmouseout="this.querySelector('span').style.borderColor='#2C2625';this.querySelector('span').style.background='#2C2625';this.querySelector('span').style.color='#F7F3ED';this.querySelector('span').style.transform='translateY(0)';">
+              <span style="width:48px;height:48px;border-radius:50%;border:2px solid #2C2625;background:#2C2625;display:flex;align-items:center;justify-content:center;color:#F7F3ED;transition:all 0.25s;box-shadow:0 2px 12px rgba(44,38,37,0.15);">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:19px;height:19px;" fill="currentColor" viewBox="0 0 192 192">
+                  <path d="M141.537 88.988c-1.044-.5-2.08-.977-3.107-1.43C136.67 60.54 121.75 44.906 96.696 44.745c-.113-.001-.226-.001-.34-.001-14.72 0-26.982 6.14-34.549 17.285l13.154 9.157c5.804-8.169 14.86-10.882 22.04-10.882.088 0 .176 0 .264.001 9.46.06 16.628 3.162 21.33 9.24 3.543 4.5 5.874 10.75 6.958 18.605-8.16-1.353-16.955-1.768-26.284-1.32C76.7 88.374 62.206 101.574 63.215 121.542c.51 10.156 5.38 18.905 13.84 24.76 7.134 5.015 16.315 7.448 25.948 6.953 12.725-.652 22.809-5.77 29.921-15.108 5.352-7.831 8.698-18.03 10.023-31.07 5.802 3.303 10.057 7.731 12.276 13.358 3.826 9.703 4.076 25.941-8.274 38.058-10.733 10.516-23.567 15.074-43.649 15.223-22.323-.167-39.076-7.471-49.692-21.646C44.6 138.62 39.414 119.397 39.26 95c.154-24.397 5.34-43.62 15.395-57.071C65.273 23.754 82.025 16.45 104.349 16.283c22.507.167 39.592 7.503 50.61 21.7 5.382 6.953 9.489 15.722 11.97 25.945l15.615-4.08c-3.053-11.846-8.022-22.096-14.815-30.596C154.136 12.451 134.276 3.66 104.436 3.436l-.188-.001c-29.7.226-49.394 9.039-62.677 25.818C30.639 44.51 24.599 66.311 24.446 95c.153 28.69 6.193 50.491 18.124 65.746 13.284 16.779 32.976 25.592 62.677 25.817l.188.001c29.62-.223 49.354-8.897 63.052-22.421 15.262-15.158 14.784-35.186 9.498-47.384-4.082-9.808-11.57-17.739-21.768-22.958l-13.68-2.813ZM100.073 137.28c-9.643.442-19.676-3.754-20.156-13.43-.361-7.141 4.29-15.03 19.932-15.827 1.774-.088 3.515-.131 5.226-.131 6.456 0 12.542.643 18.137 1.894-1.952 22.765-13.32 27.058-23.14 27.494Z"/>
+                </svg>
               </span>
             </a>
           </div>
-          <a href="mailto:savyata30@gmail.com" style="display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:#9C8B82;text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;min-height:44px;padding-top:10px;padding-bottom:10px;"
-             onmouseover="this.style.color='#C4714A';" onmouseout="this.style.color='#9C8B82';">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <a href="mailto:savyata30@gmail.com" style="display:inline-flex;align-items:center;gap:7px;font-size:0.85rem;font-weight:500;color:#4A4240;text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;min-height:44px;padding-top:10px;padding-bottom:10px;"
+             onmouseover="this.style.color='#C4714A';" onmouseout="this.style.color='#4A4240';">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
             savyata30@gmail.com
@@ -607,114 +611,80 @@
       <div class="reveal" style="margin-bottom:48px;">
         <div style="display:inline-block;font-size:0.7rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;background:rgba(196,113,74,0.15);color:#C4714A;margin-bottom:16px;">LinkedIn</div>
         <h2 style="font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:#F7F3ED;line-height:1.15;margin-bottom:10px;">Built for <span style="color:#C4714A;font-style:italic;">the Scroll.</span></h2>
-        <p style="color:rgba(247,243,237,0.5);font-size:0.9rem;max-width:480px;line-height:1.7;">Business stories, translated for the digital feed. Proving that complex market data can be thumb-stopping with the right narrative hook.</p>
+        <p style="color:rgba(247,243,237,0.5);font-size:0.9rem;max-width:480px;line-height:1.7;">My LinkedIn posts reflect how news is increasingly read: in‑feed, at speed, with context front and centre.</p>
       </div>
 
-      <!-- Featured card: Kroger (45K) -->
-      <a href="https://www.linkedin.com/posts/savyatamishra_ceo-csuite-kroger-share-7302340092126187520--gfl"
-         target="_blank" rel="noopener noreferrer" class="reveal"
-         style="display:block;text-decoration:none;background:rgba(255,255,255,0.05);border:1px solid rgba(196,113,74,0.2);border-radius:16px;padding:32px 36px;margin-bottom:16px;transition:all 0.3s;position:relative;overflow:hidden;"
-         onmouseover="this.style.borderColor='rgba(196,113,74,0.5)';this.style.background='rgba(255,255,255,0.08)';"
-         onmouseout="this.style.borderColor='rgba(196,113,74,0.2)';this.style.background='rgba(255,255,255,0.05)';">
-        <div class="featured-card-inner" style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-          <div style="flex:1;min-width:260px;">
-            <div style="display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#C4714A;background:rgba(196,113,74,0.12);padding:3px 10px;border-radius:12px;margin-bottom:14px;">Top Post</div>
-            <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;">Kroger's new CEO bets the company on one strategy: keep prices down.</p>
-            <p style="font-size:0.85rem;color:rgba(247,243,237,0.5);line-height:1.6;">A breakdown of Kroger's earnings and what the C-suite shift means for grocery competition in America.</p>
-          </div>
-          <div class="featured-card-stats" style="display:flex;gap:32px;flex-shrink:0;align-items:center;">
-            <div style="text-align:center;">
-              <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#C4714A;line-height:1;">45.5K</p>
-              <p style="font-size:0.65rem;color:rgba(247,243,237,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Impressions</p>
-            </div>
-            <div style="text-align:center;">
-              <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#C4714A;line-height:1;">123</p>
-              <p style="font-size:0.65rem;color:rgba(247,243,237,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;">Reactions</p>
-            </div>
-          </div>
-        </div>
-        <!-- Arrow -->
-        <div style="position:absolute;top:50%;right:28px;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid rgba(196,113,74,0.3);display:flex;align-items:center;justify-content:center;color:#C4714A;">
-          <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </div>
-      </a>
-
-      <!-- 2x2 grid -->
-      <div class="social-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
-
-        <!-- Canadians boycott whiskey: 28K -->
-        <a href="https://www.linkedin.com/posts/savyatamishra_whiskey-bourbon-alcohol-share-7353521632184864769-1fPu"
-           target="_blank" rel="noopener noreferrer" class="reveal"
-           style="display:block;text-decoration:none;background:rgba(255,255,255,0.04);border:1px solid rgba(196,113,74,0.15);border-radius:14px;padding:24px 28px;transition:all 0.3s;position:relative;"
-           onmouseover="this.style.borderColor='rgba(196,113,74,0.45)';this.style.background='rgba(255,255,255,0.07)';"
-           onmouseout="this.style.borderColor='rgba(196,113,74,0.15)';this.style.background='rgba(255,255,255,0.04)';">
-          <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;padding-right:44px;">Canadians are boycotting American whiskey. Distillers are panicking.</p>
-          <p style="font-size:0.8rem;color:rgba(247,243,237,0.45);line-height:1.6;margin-bottom:20px;">Trade tensions turned personal — Canadian consumers ditched bourbon overnight.</p>
-          <div style="display:flex;gap:20px;flex-wrap:wrap;">
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">28.3K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Impressions</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">19.7K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reach</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">60</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reactions</p></div>
-          </div>
-          <div style="position:absolute;top:24px;right:24px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(196,113,74,0.25);display:flex;align-items:center;justify-content:center;color:#C4714A;z-index:2;">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-        </a>
-
-        <!-- Kraft Heinz: 9.5K -->
-        <a href="https://www.linkedin.com/posts/savyatamishra_kraft-heinzwill-split-into-two-companies-share-7368660650429992961-hR2m"
-           target="_blank" rel="noopener noreferrer" class="reveal"
-           style="display:block;text-decoration:none;background:rgba(255,255,255,0.04);border:1px solid rgba(196,113,74,0.15);border-radius:14px;padding:24px 28px;transition:all 0.3s;position:relative;"
-           onmouseover="this.style.borderColor='rgba(196,113,74,0.45)';this.style.background='rgba(255,255,255,0.07)';"
-           onmouseout="this.style.borderColor='rgba(196,113,74,0.15)';this.style.background='rgba(255,255,255,0.04)';">
-          <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;padding-right:44px;">Kraft Heinz is splitting in two. A decade-long merger experiment is over.</p>
-          <p style="font-size:0.8rem;color:rgba(247,243,237,0.45);line-height:1.6;margin-bottom:20px;">After years of disappointment, one of the world's biggest food companies decides two is better than one.</p>
-          <div style="display:flex;gap:20px;flex-wrap:wrap;">
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">9.5K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Impressions</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">7K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reach</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">52</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reactions</p></div>
-          </div>
-          <div style="position:absolute;top:24px;right:24px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(196,113,74,0.25);display:flex;align-items:center;justify-content:center;color:#C4714A;z-index:2;">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-        </a>
-
-        <!-- Target CEO: 6.7K -->
-        <a href="https://www.linkedin.com/posts/savyatamishra_new-target-ceo-slashes-prices-previous-cuts-share-7438178109788504064-FPeT"
-           target="_blank" rel="noopener noreferrer" class="reveal"
-           style="display:block;text-decoration:none;background:rgba(255,255,255,0.04);border:1px solid rgba(196,113,74,0.15);border-radius:14px;padding:24px 28px;transition:all 0.3s;position:relative;"
-           onmouseover="this.style.borderColor='rgba(196,113,74,0.45)';this.style.background='rgba(255,255,255,0.07)';"
-           onmouseout="this.style.borderColor='rgba(196,113,74,0.15)';this.style.background='rgba(255,255,255,0.04)';">
-          <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;padding-right:44px;">Target's new CEO slashes prices. The last one tried this too.</p>
-          <p style="font-size:0.8rem;color:rgba(247,243,237,0.45);line-height:1.6;margin-bottom:20px;">A new CEO, a bold price cut — and the question no one wants to answer: will it actually stick?</p>
-          <div style="display:flex;gap:20px;flex-wrap:wrap;">
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">6.7K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Impressions</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">5K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reach</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">39</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reactions</p></div>
-          </div>
-          <div style="position:absolute;top:24px;right:24px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(196,113,74,0.25);display:flex;align-items:center;justify-content:center;color:#C4714A;z-index:2;">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-        </a>
-
-        <!-- McCormick: 6.4K -->
-        <a href="https://www.linkedin.com/posts/savyatamishra_spice-maker-mccormick-company-has-built-share-7440810470699159552-3FVV"
-           target="_blank" rel="noopener noreferrer" class="reveal"
-           style="display:block;text-decoration:none;background:rgba(255,255,255,0.04);border:1px solid rgba(196,113,74,0.15);border-radius:14px;padding:24px 28px;transition:all 0.3s;position:relative;"
-           onmouseover="this.style.borderColor='rgba(196,113,74,0.45)';this.style.background='rgba(255,255,255,0.07)';"
-           onmouseout="this.style.borderColor='rgba(196,113,74,0.15)';this.style.background='rgba(255,255,255,0.04)';">
-          <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#F7F3ED;line-height:1.4;margin-bottom:8px;padding-right:44px;">McCormick built a quiet empire of hot sauces. Now Unilever wants in.</p>
-          <p style="font-size:0.8rem;color:rgba(247,243,237,0.45);line-height:1.6;margin-bottom:20px;">A decade of deals — Frank's, Cholula — set the stage for McCormick's boldest move yet.</p>
-          <div style="display:flex;gap:20px;flex-wrap:wrap;">
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">6.4K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Impressions</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">4.5K</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reach</p></div>
-            <div><p style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#C4714A;">41</p><p style="font-size:0.6rem;color:rgba(247,243,237,0.35);text-transform:uppercase;letter-spacing:0.08em;">Reactions</p></div>
-          </div>
-          <div style="position:absolute;top:24px;right:24px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(196,113,74,0.25);display:flex;align-items:center;justify-content:center;color:#C4714A;z-index:2;">
-            <svg xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-        </a>
-
+      <!-- Horizontal scroll hint label -->
+      <div class="reveal" style="text-align:center;margin-bottom:28px;">
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(247,243,237,0.35);">Scroll horizontally to see more &nbsp;→</span>
       </div>
+
+      <!-- Horizontal scroll strip -->
+      <div style="position:relative;">
+        <!-- Fade edge right -->
+        <div style="pointer-events:none;position:absolute;top:0;right:0;width:120px;height:100%;background:linear-gradient(to left,rgba(30,23,20,0.95),transparent);z-index:2;border-radius:0 16px 16px 0;"></div>
+        <div id="li-scroll-strip" style="display:flex;gap:20px;overflow-x:scroll;scroll-snap-type:x mandatory;padding:8px 4px 20px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;">
+
+          <!-- Kroger -->
+          <a href="https://www.linkedin.com/posts/savyatamishra_ceo-csuite-kroger-share-7302340092126187520--gfl"
+             target="_blank" rel="noopener noreferrer" class="li-scroll-card"
+             style="flex-shrink:0;scroll-snap-align:start;width:320px;border-radius:16px;overflow:hidden;display:block;box-shadow:0 8px 40px rgba(0,0,0,0.4);transition:transform 0.3s,box-shadow 0.3s;"
+             onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.6)';"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 40px rgba(0,0,0,0.4)';">
+            <img src="li-kroger.png" alt="Kroger CEO LinkedIn post" style="width:100%;height:auto;display:block;"/>
+          </a>
+
+          <!-- Spirits -->
+          <a href="https://www.linkedin.com/posts/savyatamishra_whiskey-bourbon-alcohol-share-7353521632184864769-1fPu"
+             target="_blank" rel="noopener noreferrer" class="li-scroll-card"
+             style="flex-shrink:0;scroll-snap-align:start;width:320px;border-radius:16px;overflow:hidden;display:block;box-shadow:0 8px 40px rgba(0,0,0,0.4);transition:transform 0.3s,box-shadow 0.3s;"
+             onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.6)';"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 40px rgba(0,0,0,0.4)';">
+            <img src="li-spirits.png" alt="Canadian spirits boycott LinkedIn post" style="width:100%;height:auto;display:block;"/>
+          </a>
+
+          <!-- McCormick -->
+          <a href="https://www.linkedin.com/posts/savyatamishra_spice-maker-mccormick-company-has-built-share-7440810470699159552-3FVV"
+             target="_blank" rel="noopener noreferrer" class="li-scroll-card"
+             style="flex-shrink:0;scroll-snap-align:start;width:320px;border-radius:16px;overflow:hidden;display:block;box-shadow:0 8px 40px rgba(0,0,0,0.4);transition:transform 0.3s,box-shadow 0.3s;"
+             onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.6)';"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 40px rgba(0,0,0,0.4)';">
+            <img src="li-mccormick.png" alt="McCormick Unilever LinkedIn post" style="width:100%;height:auto;display:block;"/>
+          </a>
+
+          <!-- Best Buy -->
+          <a href="https://www.linkedin.com/in/savyatamishra/"
+             target="_blank" rel="noopener noreferrer" class="li-scroll-card"
+             style="flex-shrink:0;scroll-snap-align:start;width:320px;border-radius:16px;overflow:hidden;display:block;box-shadow:0 8px 40px rgba(0,0,0,0.4);transition:transform 0.3s,box-shadow 0.3s;margin-right:100px;"
+             onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.6)';"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 40px rgba(0,0,0,0.4)';">
+            <img src="li-bestbuy.png" alt="Best Buy CEO LinkedIn post" style="width:100%;height:auto;display:block;"/>
+          </a>
+
+        </div>
+      </div>
+
+      <style>
+        #li-scroll-strip::-webkit-scrollbar { display: none; }
+        #li-scroll-strip.dragging { cursor: grabbing; user-select: none; }
+      </style>
+      <script>
+        (function() {
+          const strip = document.getElementById('li-scroll-strip');
+          let isDown = false, startX, scrollLeft;
+          strip.addEventListener('mousedown', e => {
+            isDown = true; strip.classList.add('dragging');
+            startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft;
+          });
+          strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('dragging'); });
+          strip.addEventListener('mouseup', () => { isDown = false; strip.classList.remove('dragging'); });
+          strip.addEventListener('mousemove', e => {
+            if (!isDown) return; e.preventDefault();
+            const x = e.pageX - strip.offsetLeft;
+            strip.scrollLeft = scrollLeft - (x - startX) * 1.5;
+          });
+        })();
+      </script>
 
       <!-- Total aggregate bar -->
       <div class="reveal" style="margin-top:32px;padding:20px 28px;background:rgba(255,255,255,0.03);border:1px solid rgba(196,113,74,0.1);border-radius:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
@@ -817,6 +787,49 @@
   <footer style="background:#2C2625;padding:32px 48px;">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="font-serif text-lg font-semibold" style="color:#F7F3ED;">Savyata Mishra</p>
+
+      <!-- Social icons -->
+      <div style="display:flex;align-items:center;gap:10px;">
+        <a href="https://www.linkedin.com/in/savyatamishra/" target="_blank" rel="noopener noreferrer" title="LinkedIn"
+           style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
+           onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='#C4714A';this.querySelector('span').style.color='#FDFAF6';"
+           onmouseout="this.querySelector('span').style.borderColor='rgba(247,243,237,0.25)';this.querySelector('span').style.background='transparent';this.querySelector('span').style.color='rgba(247,243,237,0.6)';">
+          <span style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(247,243,237,0.25);display:flex;align-items:center;justify-content:center;color:rgba(247,243,237,0.6);transition:all 0.25s;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:15px;height:15px;" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </span>
+        </a>
+        <a href="https://x.com/savyatamishra?s=11" target="_blank" rel="noopener noreferrer" title="X"
+           style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
+           onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='#C4714A';this.querySelector('span').style.color='#FDFAF6';"
+           onmouseout="this.querySelector('span').style.borderColor='rgba(247,243,237,0.25)';this.querySelector('span').style.background='transparent';this.querySelector('span').style.color='rgba(247,243,237,0.6)';">
+          <span style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(247,243,237,0.25);display:flex;align-items:center;justify-content:center;color:rgba(247,243,237,0.6);transition:all 0.25s;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </span>
+        </a>
+        <a href="https://www.threads.com/@savyata_mp3?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" title="Threads"
+           style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;"
+           onmouseover="this.querySelector('span').style.borderColor='#C4714A';this.querySelector('span').style.background='#C4714A';this.querySelector('span').style.color='#FDFAF6';"
+           onmouseout="this.querySelector('span').style.borderColor='rgba(247,243,237,0.25)';this.querySelector('span').style.background='transparent';this.querySelector('span').style.color='rgba(247,243,237,0.6)';">
+          <span style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(247,243,237,0.25);display:flex;align-items:center;justify-content:center;color:rgba(247,243,237,0.6);transition:all 0.25s;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;" fill="currentColor" viewBox="0 0 192 192">
+              <path d="M141.537 88.988c-1.044-.5-2.08-.977-3.107-1.43C136.67 60.54 121.75 44.906 96.696 44.745c-.113-.001-.226-.001-.34-.001-14.72 0-26.982 6.14-34.549 17.285l13.154 9.157c5.804-8.169 14.86-10.882 22.04-10.882.088 0 .176 0 .264.001 9.46.06 16.628 3.162 21.33 9.24 3.543 4.5 5.874 10.75 6.958 18.605-8.16-1.353-16.955-1.768-26.284-1.32C76.7 88.374 62.206 101.574 63.215 121.542c.51 10.156 5.38 18.905 13.84 24.76 7.134 5.015 16.315 7.448 25.948 6.953 12.725-.652 22.809-5.77 29.921-15.108 5.352-7.831 8.698-18.03 10.023-31.07 5.802 3.303 10.057 7.731 12.276 13.358 3.826 9.703 4.076 25.941-8.274 38.058-10.733 10.516-23.567 15.074-43.649 15.223-22.323-.167-39.076-7.471-49.692-21.646C44.6 138.62 39.414 119.397 39.26 95c.154-24.397 5.34-43.62 15.395-57.071C65.273 23.754 82.025 16.45 104.349 16.283c22.507.167 39.592 7.503 50.61 21.7 5.382 6.953 9.489 15.722 11.97 25.945l15.615-4.08c-3.053-11.846-8.022-22.096-14.815-30.596C154.136 12.451 134.276 3.66 104.436 3.436l-.188-.001c-29.7.226-49.394 9.039-62.677 25.818C30.639 44.51 24.599 66.311 24.446 95c.153 28.69 6.193 50.491 18.124 65.746 13.284 16.779 32.976 25.592 62.677 25.817l.188.001c29.62-.223 49.354-8.897 63.052-22.421 15.262-15.158 14.784-35.186 9.498-47.384-4.082-9.808-11.57-17.739-21.768-22.958l-13.68-2.813ZM100.073 137.28c-9.643.442-19.676-3.754-20.156-13.43-.361-7.141 4.29-15.03 19.932-15.827 1.774-.088 3.515-.131 5.226-.131 6.456 0 12.542.643 18.137 1.894-1.952 22.765-13.32 27.058-23.14 27.494Z"/>
+            </svg>
+          </span>
+        </a>
+        <a href="mailto:savyata30@gmail.com"
+           style="margin-left:4px;display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:500;color:rgba(247,243,237,0.45);text-decoration:none;transition:color 0.2s;min-height:36px;"
+           onmouseover="this.style.color='#C4714A';" onmouseout="this.style.color='rgba(247,243,237,0.45)';">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          savyata30@gmail.com
+        </a>
+      </div>
+
       <p class="text-xs" style="color:rgba(247,243,237,0.25);">© 2025 · Senior Content Specialist</p>
     </div>
   </footer>
